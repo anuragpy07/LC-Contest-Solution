@@ -23,9 +23,9 @@ public:
         dp[0][0][1] = (grid[0][0] < 0) ? 0 : LLONG_MIN;
         dp[0][0][2] = (grid[0][0] < 0) ? 0 : LLONG_MIN;
 
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                for (int k = 0; k < 3; ++k) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < 3; k++) {
                     if (i > 0) dp[i][j][k] = max(dp[i][j][k], safeAdd(dp[i - 1][j][k], grid[i][j]));
                     if (i > 0 && k > 0 && grid[i][j] < 0) dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j][k - 1]);
                     if (j > 0) dp[i][j][k] = max(dp[i][j][k], safeAdd(dp[i][j - 1][k], grid[i][j]));
